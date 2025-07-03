@@ -10,7 +10,7 @@ void main() {
 void runTask1() {
   print('-------------------------- Task 1 ----------------------------------');
   var random = Random();
-  List<int> numbers = List.generate(100, (_) => random.nextInt(101));
+  final List<int> numbers = List.generate(100, (_) => random.nextInt(101));
   print('Початковий список:');
   print('[33m$numbers[0m');
 
