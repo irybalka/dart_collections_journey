@@ -1,11 +1,12 @@
 import 'dart:math';
 import 'names.dart';
+import 'package:word_generator/word_generator.dart';
 
 void main() {
 //
   runTask1();
   runTask2();
-  // runTask3();
+  runTask3();
 }
 
 void runTask1() {
@@ -59,8 +60,35 @@ void runTask2() {
   print('Імена, які є тільки в ukrainianNames2:');
   print('[33m$onlyInNames2[0m');
 }
-/*
+
 void runTask3() {
   print(
       '\u001b[31m-------------------------- Task 3 ----------------------------------\u001b[0m');
-}*/
+
+  final wordGenerator = WordGenerator();
+
+  // Generate random nouns
+  List<String> nouns = wordGenerator.randomNouns(50);
+
+  Map<String, int> nounsMap = {};
+
+  for (String noun in nouns) {
+    nounsMap[noun] = noun.length;
+  }
+
+  Map<String, int> tempNouns = {};
+
+  nounsMap.forEach((key, value) {
+    if (value % 2 == 0) {
+      tempNouns[key] = value;
+    }
+  });
+  print('Слова з рандомного списку з парним числом букв:');
+  int tempMounsCount = 1; //лічильник елементів для відсікання останньої коми
+  for (String key in tempNouns.keys) {
+    tempMounsCount++;
+    print((tempMounsCount < tempNouns.length)
+        ? '\u001b[33m$key\u001b[0m,'
+        : '\u001b[33m$key\u001b[0m');
+  }
+}
